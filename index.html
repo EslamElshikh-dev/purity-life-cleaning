@@ -554,8 +554,170 @@ z-index:9999;
 }
 
 </style>
+<!-- Contact Form -->
 
+<section id="contact" class="contact-section">
+
+<div class="container">
+
+<div class="section-title">
+<h2>تواصل معنا</h2>
+<p>اطلب الخدمة المناسبة وسنتواصل معك في أسرع وقت</p>
+</div>
+
+<form id="contactForm" class="contact-form">
+
+<input
+type="text"
+id="name"
+placeholder="الاسم"
+required>
+
+<input
+type="tel"
+id="phone"
+placeholder="رقم الجوال"
+required>
+
+<select id="service">
+
+<option>تنظيف الفلل</option>
+<option>تنظيف المنازل</option>
+<option>تنظيف المكاتب</option>
+<option>تنظيف الشركات والمؤسسات</option>
+<option>تنظيف المساجد</option>
+<option>تنظيف الشاليهات والاستراحات</option>
+
+</select>
+
+<textarea
+id="details"
+placeholder="اكتب تفاصيل الطلب"
+rows="5"></textarea>
+
+<button type="submit">
+
+إرسال عبر واتساب
+
+</button>
+
+</form>
+
+</div>
+
+</section> 
+  <style>
+
+.contact-section{
+
+padding:80px 0;
+
+background:#f8fafc;
+
+}
+
+body.dark .contact-section{
+
+background:#111827;
+
+}
+
+.contact-form{
+
+max-width:700px;
+
+margin:auto;
+
+display:flex;
+
+flex-direction:column;
+
+gap:15px;
+
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea{
+
+padding:15px;
+
+border:1px solid #d1d5db;
+
+border-radius:14px;
+
+font-family:'Cairo',sans-serif;
+
+font-size:16px;
+
+}
+
+.contact-form button{
+
+background:#0f766e;
+
+color:#fff;
+
+border:none;
+
+padding:15px;
+
+border-radius:14px;
+
+font-size:17px;
+
+font-weight:700;
+
+cursor:pointer;
+
+}
+
+.contact-form button:hover{
+
+opacity:.9;
+
+}
+
+</style> 
+<script>
+
+document
+.getElementById("contactForm")
+.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+let name =
+document.getElementById("name").value;
+
+let phone =
+document.getElementById("phone").value;
+
+let service =
+document.getElementById("service").value;
+
+let details =
+document.getElementById("details").value;
+
+let message =
+
+`الاسم: ${name}
+رقم الجوال: ${phone}
+الخدمة: ${service}
+التفاصيل: ${details}`;
+
+window.open(
+
+`https://wa.me/966553382299?text=${encodeURIComponent(message)}`,
+
+"_blank"
+
+);
+
+});
+
+</script> 
 </body>
+</html>
 
-</html> 
 
