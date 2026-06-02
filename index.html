@@ -717,6 +717,116 @@ window.open(
 });
 
 </script> 
+<!-- Mobile Bottom Navigation -->
+
+<nav class="bottom-nav">
+
+<a href="#">
+<i class="fas fa-home"></i>
+<span>الرئيسية</span>
+</a>
+
+<a href="#services">
+<i class="fas fa-broom"></i>
+<span>الخدمات</span>
+</a>
+
+<a href="#map">
+<i class="fas fa-map-marker-alt"></i>
+<span>النطاق</span>
+</a>
+
+<a href="#contact">
+<i class="fas fa-headset"></i>
+<span>تواصل</span>
+</a>
+
+</nav> 
+  <style>
+
+.bottom-nav{
+
+position:fixed;
+
+bottom:0;
+
+left:0;
+
+width:100%;
+
+height:70px;
+
+background:#ffffff;
+
+display:flex;
+
+justify-content:space-around;
+
+align-items:center;
+
+box-shadow:0 -5px 20px rgba(0,0,0,.1);
+
+z-index:9999;
+
+}
+
+.bottom-nav a{
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+justify-content:center;
+
+text-decoration:none;
+
+color:#0f766e;
+
+font-size:12px;
+
+font-weight:700;
+
+gap:4px;
+
+}
+
+.bottom-nav i{
+
+font-size:20px;
+
+}
+
+body.dark .bottom-nav{
+
+background:#0f172a;
+
+}
+
+body.dark .bottom-nav a{
+
+color:#fff;
+
+}
+
+@media(min-width:769px){
+
+.bottom-nav{
+
+display:none;
+
+}
+
+}
+
+body{
+
+padding-bottom:80px;
+
+}
+
+</style> 
 </body>
 </html>
 
