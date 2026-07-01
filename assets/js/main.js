@@ -11,6 +11,22 @@
     user:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-4.4 0-8 2-8 4.5V21h16v-2.5c0-2.5-3.6-4.5-8-4.5Z"/></svg>'
   };
 
+  function loadCssFallback(){
+    document.documentElement.style.colorScheme='light only';
+    if(!document.querySelector('meta[name="color-scheme"]')){
+      const m=document.createElement('meta');
+      m.name='color-scheme';
+      m.content='light only';
+      document.head.appendChild(m);
+    }
+    if(!document.querySelector('link[href*="final-mobile-fixes.css"]')){
+      const l=document.createElement('link');
+      l.rel='stylesheet';
+      l.href='assets/css/final-mobile-fixes.css?v=runtime-stable-1';
+      document.head.appendChild(l);
+    }
+  }
+
   function polishIcons(){
     $$('.float-wa').forEach(a=>a.innerHTML=svg.wa);
     $$('.float-call').forEach(a=>a.innerHTML=svg.ph);
@@ -34,15 +50,27 @@
   }
 
   function faq(){
-    $$('.faq-q').forEach(btn=>btn.addEventListener('click',()=>{const item=btn.closest('.faq-item'), answer=item&&item.querySelector('.faq-a'); if(!item||!answer)return; const open=item.classList.toggle('open'); btn.setAttribute('aria-expanded',String(open)); answer.style.maxHeight=open?answer.scrollHeight+'px':'0px';}));
+    $$('.faq-q').forEach(btn=>btn.addEventListener('click',()=>{
+      const item=btn.closest('.faq-item'), answer=item&&item.querySelector('.faq-a');
+      if(!item||!answer)return;
+      const open=item.classList.toggle('open');
+      btn.setAttribute('aria-expanded',String(open));
+      answer.style.maxHeight=open?answer.scrollHeight+'px':'0px';
+    }));
   }
 
   function whatsappForm(){
     const form=$('[data-whatsapp-form]');
     if(!form) return;
-    form.addEventListener('submit',e=>{e.preventDefault();const d=new FormData(form);const msg=['طلب خدمة جديد من موقع بيورتي لايف','الاسم: '+(d.get('name')||''),'الجوال: '+(d.get('phone')||''),'الخدمة: '+(d.get('service')||''),'المدينة/الحي: '+(d.get('district')||''),'الموعد المناسب: '+(d.get('date')||''),'التفاصيل: '+(d.get('details')||'')].join('\n');window.open('https://wa.me/966553382299?text='+encodeURIComponent(msg),'_blank','noopener');});
+    form.addEventListener('submit',e=>{
+      e.preventDefault();
+      const d=new FormData(form);
+      const msg=['طلب خدمة جديد من موقع بيورتي لايف','الاسم: '+(d.get('name')||''),'الجوال: '+(d.get('phone')||''),'الخدمة: '+(d.get('service')||''),'المدينة/الحي: '+(d.get('district')||''),'الموعد المناسب: '+(d.get('date')||''),'التفاصيل: '+(d.get('details')||'')].join('\n');
+      window.open('https://wa.me/966553382299?text='+encodeURIComponent(msg),'_blank','noopener');
+    });
   }
 
+  loadCssFallback();
   polishIcons();
   headerScroll();
   mobileMenu();
