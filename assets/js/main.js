@@ -1,6 +1,11 @@
 (function(){
   const $=(s,r=document)=>r.querySelector(s);
   const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+  const isGitHub=location.hostname.endsWith('github.io');
+  const basePath=isGitHub?'/purity-life-cleaning/':'/';
+  const abs=p=>basePath+p.replace(/^\/+/, '');
+  const scriptUrl=document.currentScript&&document.currentScript.src?document.currentScript.src:'';
+  const cssHref=scriptUrl?new URL('../css/final-mobile-fixes.css?v=stable-live-1',scriptUrl).href:abs('assets/css/final-mobile-fixes.css?v=stable-live-1');
 
   const svg={
     wa:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.2L2.1 22l5-1.3A10 10 0 1 0 12 2Zm5.6 14.2c-.2.7-1.3 1.2-1.9 1.3-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.7.9c-.1.1-.3.3-.1.6.2.3.8 1.3 1.6 2 1.1 1 2.1 1.3 2.4 1.4.3.1.5.1.7-.1.2-.2.7-.9.9-1.1.2-.3.4-.2.6-.1.3.1 1.7.8 2 .9.3.1.5.2.6.3v.1c0 .2 0 .7-.2 1.4Z"/></svg>',
@@ -22,16 +27,20 @@
     if(!document.querySelector('link[href*="final-mobile-fixes.css"]')){
       const l=document.createElement('link');
       l.rel='stylesheet';
-      l.href='assets/css/final-mobile-fixes.css?v=runtime-stable-1';
+      l.href=cssHref;
       document.head.appendChild(l);
     }
+  }
+
+  function showContent(){
+    $$('.reveal').forEach(el=>el.classList.add('is-visible'));
   }
 
   function polishIcons(){
     $$('.float-wa').forEach(a=>a.innerHTML=svg.wa);
     $$('.float-call').forEach(a=>a.innerHTML=svg.ph);
     $$('.bottom-nav').forEach(n=>{
-      n.innerHTML='<a href="services/"><span>'+svg.srv+'</span><span>خدماتنا</span></a><a href="blog/"><span>'+svg.blog+'</span><span>المدونة</span></a><a class="is-home" href="./"><span>'+svg.home+'</span><span>الرئيسية</span></a><a href="about/"><span>'+svg.user+'</span><span>من نحن</span></a><a href="contact/"><span>'+svg.ph+'</span><span>تواصل</span></a>';
+      n.innerHTML='<a href="'+abs('services/')+'"><span>'+svg.srv+'</span><span>خدماتنا</span></a><a href="'+abs('blog/')+'"><span>'+svg.blog+'</span><span>المدونة</span></a><a class="is-home" href="'+basePath+'"><span>'+svg.home+'</span><span>الرئيسية</span></a><a href="'+abs('about/')+'"><span>'+svg.user+'</span><span>من نحن</span></a><a href="'+abs('contact/')+'"><span>'+svg.ph+'</span><span>تواصل</span></a>';
     });
   }
 
@@ -71,6 +80,7 @@
   }
 
   loadCssFallback();
+  showContent();
   polishIcons();
   headerScroll();
   mobileMenu();
