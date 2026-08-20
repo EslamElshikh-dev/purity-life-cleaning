@@ -5,9 +5,9 @@
 ## مهم قبل الرفع
 النطاق النهائي غير مذكور أثناء التنفيذ؛ لذلك تم استخدام المتغير التالي في canonical / schema / sitemap:
 
-https://YOUR-DOMAIN.com
+https://puritylife.vercel.app
 
-قبل رفع الموقع رسميًا، استبدل `https://YOUR-DOMAIN.com` بالدومين النهائي في كل الملفات، خصوصًا:
+قبل رفع الموقع رسميًا، استبدل `https://puritylife.vercel.app` بالدومين النهائي في كل الملفات، خصوصًا:
 - sitemap.xml
 - robots.txt
 - canonical links
