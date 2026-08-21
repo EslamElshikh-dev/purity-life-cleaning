@@ -22,6 +22,17 @@
     $$('.reveal').forEach(el=>el.classList.add('is-visible'));
   }
 
+  function offerTicker(){
+    if($('.offer-ticker')) return;
+    const message='🎒 المدارس رجعت… خلّوا النظافة علينا والبداية الحلوة عليكم! احتفلوا بعودة المدارس مع خصم 25% من بيورتي لايف على تنظيف الفلل والشقق والمطابخ والمفروشات والسجاد والمساجد والمطاعم. بداية أنظف وراحة أكبر وتوفير يستاهل — احجزوا الآن قبل انتهاء العرض — 0553382299';
+    const ticker=document.createElement('aside');
+    ticker.className='offer-ticker';
+    ticker.setAttribute('aria-label','عرض العودة للمدارس من بيورتي لايف');
+    ticker.innerHTML='<a class="offer-ticker__link" href="tel:+966553382299" aria-label="'+message+'"><span class="sr-only">'+message+'</span><span class="offer-ticker__viewport" aria-hidden="true"><span class="offer-ticker__track"><span class="offer-ticker__item"><b>عودة المدارس</b><span>'+message+'</span><em>اتصل الآن</em></span><span class="offer-ticker__item"><b>عودة المدارس</b><span>'+message+'</span><em>اتصل الآن</em></span></span></span></a>';
+    document.body.prepend(ticker);
+    document.documentElement.classList.add('has-offer-ticker');
+  }
+
   function trackLead(type,destination){
     const eventName=type==='phone'?'phone_call_click':'whatsapp_click';
     const payload={
@@ -106,6 +117,7 @@
     });
   }
 
+  offerTicker();
   showContent();
   polishIcons();
   headerScroll();
