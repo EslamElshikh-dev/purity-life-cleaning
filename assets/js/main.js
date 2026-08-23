@@ -4,6 +4,10 @@
   const isGitHub=location.hostname.endsWith('github.io');
   const basePath=isGitHub?'/purity-life-cleaning/':'/';
   const abs=p=>basePath+p.replace(/^\/+/, '');
+  const adsConfig=Object.assign({
+    phoneConversion:'AW-18406227245/zE3hCIe_2eYcEK364shE',
+    whatsappConversion:'AW-18406227245/zE3hCIe_2eYcEK364shE'
+  },window.PURITY_ADS_CONFIG||{});
 
   const svg={
     wa:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.2L2.1 22l5-1.3A10 10 0 1 0 12 2Zm5.6 14.2c-.2.7-1.3 1.2-1.9 1.3-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.7.9c-.1.1-.3.3-.1.6.2.3.8 1.3 1.6 2 1.1 1 2.1 1.3 2.4 1.4.3.1.5.1.7-.1.2-.2.7-.9.9-1.1.2-.3.4-.2.6-.1.3.1 1.7.8 2 .9.3.1.5.2.6.3v.1c0 .2 0 .7-.2 1.4Z"/></svg>',
@@ -36,8 +40,7 @@
     window.dataLayer.push(payload);
     if(typeof window.gtag==='function'){
       window.gtag('event',eventName,{event_category:'lead',value:1,currency:'SAR'});
-      const config=window.PURITY_ADS_CONFIG||{};
-      const sendTo=type==='phone'?config.phoneConversion:config.whatsappConversion;
+      const sendTo=type==='phone'?adsConfig.phoneConversion:adsConfig.whatsappConversion;
       if(sendTo) window.gtag('event','conversion',{send_to:sendTo,value:1,currency:'SAR'});
     }
   }
