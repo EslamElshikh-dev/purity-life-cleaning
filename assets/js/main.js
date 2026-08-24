@@ -6,7 +6,7 @@
   const abs=p=>basePath+p.replace(/^\/+/, '');
   const adsConfig=Object.assign({
     phoneConversion:'AW-18406227245/zE3hCIe_2eYcEK364shE',
-    whatsappConversion:'AW-18406227245/zE3hCIe_2eYcEK364shE'
+    whatsappConversion:'AW-18406227245/F7vxCIDt2-YcEK364shE'
   },window.PURITY_ADS_CONFIG||{});
 
   const svg={
